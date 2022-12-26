@@ -4,8 +4,8 @@ import { AuthContext } from '../components/AuthContext';
 import { baseURL } from '../constants';
 import MangaData, { UserMangaData } from '../models/Manga';
 
-const mangaPath = 'http://127.0.0.1:8000/api/MangaLib/manga/'
-const userMangaPath = 'http://localhost:8000/api/MangaLib/userManga/'
+const mangaPath = '/api/MangaLib/manga/'
+const userMangaPath = '/api/MangaLib/userManga/'
 
 export async function getMangas(resultHandler: (data: any)=>void){
     

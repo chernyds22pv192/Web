@@ -1,0 +1,32 @@
+version: "3.7"
+   
+services:
+  db:
+    image: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    env_file: 
+      - .env.template
+    
+
+  backend:
+    build: 
+      dockerfile: Dockerfile
+      context: ../backend
+    env_file: 
+      - .env.template    
+    depends_on:
+      - db
+    restart: always
+    tty: true
+      
+  frontend:
+    build:
+      dockerfile: Dockerfile
+      context: ../frontend
+    ports:
+      - "81:80"
+    depends_on:
+      - backend
+volumes: 
+  postgres_data:
